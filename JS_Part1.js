@@ -1,16 +1,16 @@
 // Values and Variables
 let country = "Moldova";
 let continent = "Eurasia";
-let population = 2389;
+let population = 2389000;
 
 console.log(`Country: ${country}, Continent: ${continent}, Population ${population}`);
 
 // Data Types
 console.log("\n");
 let isIsland = false;
-let language = "romanian";
+let language;
 
-console.log(`Is island? ${isIsland} Country: ${country}, Continent: ${continent}, Population: ${population} million`);
+console.log(`Is island - ${typeof isIsland}, Population - ${typeof population}, Country - ${typeof country}, Language - ${typeof language}`);
 
 // Basic Operators
 console.log("\n");
@@ -19,32 +19,33 @@ let halfPopulation = population / 2;
 console.log(halfPopulation);
 
 //2
-console.log(population + 1);
+console.log(++population);
 
 //3
-let FinlandPopulation = 6;
+let FinlandPopulation = 5637000;
 let morePopulation = population > FinlandPopulation;
 console.log(morePopulation);
 
 //4
-let averagePopulation = 33;
+let averagePopulation = 33000000;
 let lessPopulation = population < averagePopulation;
 console.log(lessPopulation);
 
-//5 + Strings and Template Literals       
-let description = `${country} is in ${continent}, and its ${population} million people speak ${language}.`;
+//5 + Strings and Template Literals 
+let languageMoldova = "romanian";      
+let description = `${country} is in ${continent}, and its ${population} million people speak ${languageMoldova}.`;
 console.log(description);
 
 // Equality Operators: == vs. === 
-let numNeighbours = Number(prompt('How many neighbour countries does your country have?', ''));
+// let numNeighbours = Number(prompt('How many neighbour countries does your country have?', ''));
 
-if (numNeighbours === 1) {
-    console.log("Only 1 border!");
-} else if (numNeighbours > 1) {
-    console.log("More than 1 border");
-} else {
-    console.log("Noborders");
-}
+// if (numNeighbours === 1) {
+//     console.log("Only 1 border!");
+// } else if (numNeighbours > 1) {
+//     console.log("More than 1 border");
+// } else {
+//     console.log("Noborders");
+// }
 
 // Logical Operators       
 console.log("\n");        
@@ -73,9 +74,9 @@ if (population > 33) {
 
 // The switch Statement  
 console.log("\n");              
-let newLanguage = "Romanian";
+language = "Spanish";
 
-switch(newLanguage) {
+switch(language) {
    case "Chinese" :
    case "Mandarin":
        console.log('MOST number of native speakers!');
