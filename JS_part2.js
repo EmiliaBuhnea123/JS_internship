@@ -15,63 +15,59 @@ console.log(thirdCountry);
 // Function
 console.log("\n");
 function percentageOfWorld1(population) {
-   return (population / 7900 * 100).toFixed(2);;
+   return (population / 7900000000 * 100).toFixed(2);;
 }
 
-let China = percentageOfWorld1(1441);
-let Moldova = percentageOfWorld1(2389);
-let Turcia = percentageOfWorld1(85);
+let chinaPopulation = 1410000000;
+let moldovaPopulation = 2389000;
+let turciaPopulation = 87800000;
+let usaPopulation = 340000000;
 
-console.log(`The percentage of World for China is ${China}`);
-console.log(`The percentage of World for Moldova is ${Moldova}`);
-console.log(`The percentage of World for Turkey is ${Turcia}`);
+console.log(`The percentage of World for China is ${percentageOfWorld1(chinaPopulation)}`);
+console.log(`The percentage of World for Moldova is ${percentageOfWorld1(moldovaPopulation)}`);
+console.log(`The percentage of World for Turkey is ${percentageOfWorld1(turciaPopulation)}`);
 
 
 // Expressions
 const percentageOfWorld2 = function(population) {
-   return (population / 7900 * 100).toFixed(2);
+   return (population / 7900000000 * 100).toFixed(2);
 };
 
-let China1 = percentageOfWorld2(1441);
-let Moldova1 = percentageOfWorld2(2389);
-let Turcia1 = percentageOfWorld2(85);
-
-console.log(`The percentage of World for China is ${China1}`);
-console.log(`The percentage of World for Moldova is ${Moldova1}`);
-console.log(`The percentage of World for Turkey is ${Turcia1}`);
+console.log(`The percentage of World for China is ${percentageOfWorld2(chinaPopulation)}`);
+console.log(`The percentage of World for Moldova is ${percentageOfWorld2(moldovaPopulation)}`);
+console.log(`The percentage of World for Turkey is ${percentageOfWorld2(turciaPopulation)}`);
 
 
 // Arrow Functions
-let percentageOfWorld3 = population => (population / 7900 * 100).toFixed(2);
+let percentageOfWorld3 = population => {
+   return (population / 7900000000 * 100).toFixed(2);
+}
 
-let China3 = percentageOfWorld3(1441);
-let Moldova3 = percentageOfWorld3(2389);
-let Turcia3 = percentageOfWorld3(85);
-
-console.log(`The percentage of World for China is ${China3}`);
-console.log(`The percentage of World for Moldova is ${Moldova3}`);
-console.log(`The percentage of World for Turkey is ${Turcia3}`);
+console.log(`The percentage of World for China is ${percentageOfWorld3(chinaPopulation)}`);
+console.log(`The percentage of World for Moldova is ${percentageOfWorld3(moldovaPopulation)}`);
+console.log(`The percentage of World for Turkey is ${percentageOfWorld3(turciaPopulation)}`);
 
 
 // Functions Calling Other Functions
 console.log("\n");
-let describePopulation = (country1, population1) => `${country1} has ${population1} million people, which is about ${percentageOfWorld1(population1)} %`;
+let describePopulation = (country1, population1) => console.log(`${country1} has ${population1} million people, which is about ${percentageOfWorld1(population1)} %`);
 
-let China4 = describePopulation ("China", 1441);
-let Moldova4 = describePopulation("Moldova", 2389);
-let Turcia4 = describePopulation("Turcia", 85);
-
-console.log(China4);
-console.log(Moldova4);
-console.log(Turcia4);
+let China4 = describePopulation ("China", chinaPopulation);
+let Moldova4 = describePopulation("Moldova", moldovaPopulation);
+let Turcia4 = describePopulation("Turcia", turciaPopulation);
 
 
 // Introduction to Array    
 console.log("\n");        
-let population2 = [1441, 2389, 85, 9034];
+let population2 = [
+  chinaPopulation,
+  moldovaPopulation,
+  turciaPopulation,
+  usaPopulation
+];
 console.log(population2.length === 4);
 
-let percentages = [percentageOfWorld1(1441), percentageOfWorld1(2389), percentageOfWorld1(85), percentageOfWorld1(9034)];
+let percentages = [percentageOfWorld1(chinaPopulation), percentageOfWorld1(moldovaPopulation), percentageOfWorld1(turciaPopulation), percentageOfWorld1(usaPopulation)];
 console.log(percentages);
 
 
@@ -99,17 +95,22 @@ console.log(neighbours);
 console.log("\n");              
 for (let i=0; i<=50; i++)
 {
-   console.log(`Person number ${i} is currently traveling`)
+   console.log(`Voter number ${i} is currently voting`)
 }
 
 // Looping Arrays, Breaking and Continuing
 console.log("\n");
-let population3 = [1441, 2389, 85, 9034];
-for (population of population3) {
-   let percentages2 = percentageOfWorld1(population);
+let percentages2 = [];
+for (let population of population2) {
+   percentages2.push(percentageOfWorld1(population));
    console.log(percentages2);
 }
 
+if (JSON.stringify(percentages) === JSON.stringify(percentages2)) {
+  console.log("Arrays are equal");
+} else {
+  console.log("Arrays are not equal");
+}
 
 // Looping Backwards and Loops in Loops
 console.log("\n");
@@ -122,36 +123,38 @@ for (let neighbours of listOfNeighbours) {
 
 // LECTURE: The while Loop      
 console.log("\n");         
-let population4 = [1441, 2389, 85, 9034];
 let i =0;
-while (i < population4.length) {
-   let percentage4 = percentageOfWorld1(population4[i]);
-   console.log(percentage4);
+while (i < population2.length) {
+   let percentage3 = percentageOfWorld1(population2[i]);
+   console.log(percentage3);
    i++;
 }
 
 // Introduction to Objects 
 // Object Methods           
-console.log("\n");                              
+console.log("\n");                             
 let myCountry = {
-   country: "Moldova",
-   capital: "Chisinau",
-   language: "romanina",
-   Population: 22389,
-   neighbours: ["Romania", "Ukraine"],
+   country: "Portugal",
+   capital: "Lisbon",
+   language: "Portuguese",
+   citizens: 10700000,
+   neighbours: ["Spain"],
    describe() {
-       console.log(`${this.country} has ${this.Population} million finnish-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`);
+       console.log(`${this.country} has ${this.citizens} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`);
    },
    checkIsland() {
        let numberOfNeighbours = this.neighbours.length;
-       this.isIsland1 = numberOfNeighbours == 0 ? true : false;
-       console.log(this.isIsland1);
+       this.isIsland = numberOfNeighbours == 0 ? true : false;
+       console.log(this.isIsland);
    }
 }
 
+myCountry.describe();
+myCountry.checkIsland();
+
 // Dot vs. Bracket Notation 
 console.log("\n");                   
-console.log(`${myCountry.country} has ${myCountry.Population} million finnish-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`);
+console.log(`${myCountry.country} has ${myCountry.citizens} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`);
 
-console.log(`New population: ${myCountry.Population += 2000}`);
-console.log(`Old population: ${myCountry["Population"] -= 2000}`);
+console.log(`New population: ${myCountry.citizens += 2000}`);
+console.log(`Old population: ${myCountry["citizens"] -= 2000}`);
