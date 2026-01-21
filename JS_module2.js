@@ -17,9 +17,9 @@ let pockets = {
   money: 2000
 };
 
-pockets.__proto__=bed;
-bed.__proto__=table;
-table.__proto__=head;
+Object.setPrototypeOf(pockets,bed)
+Object.setPrototypeOf(bed,table)
+Object.setPrototypeOf(table,head)
 
 console.time("head");
 for (let i = 0; i < 1_000_000; i++) {
@@ -75,11 +75,14 @@ class Clock {
 
     stop() {
         clearInterval(this.timer);
+        this.timer = null; 
     }
 
     start() {
         this.render();
+        if(this.timer==null){
         this.timer = setInterval(() => this.render(), 1000);
+        }
     }
 }
 
@@ -107,16 +110,11 @@ let salaries = {
   "Mary": 250
 };
 
-function sumSalaries(salaries) {
-  const values = Object.values(salaries);
-  let total = 0;
-  for(const value of values){
-     total += value;
-  }
-  return total;
+function sumSalaries(salaries){
+  return Object.values(salaries).reduce((total,num) => total + num, 0)
 }
 
-console.log(sumSalaries(salaries) ); 
+console.log(sumSalaries(salaries)); 
 
 // Destructuring assignment
 console.log('\n');
