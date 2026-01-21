@@ -37,15 +37,15 @@ let description = `${country} is in ${continent}, and its ${population} million 
 console.log(description);
 
 // Equality Operators: == vs. === 
-// let numNeighbours = Number(prompt('How many neighbour countries does your country have?', ''));
+let numNeighbours = Number(prompt('How many neighbour countries does your country have?', ''));
 
-// if (numNeighbours === 1) {
-//     console.log("Only 1 border!");
-// } else if (numNeighbours > 1) {
-//     console.log("More than 1 border");
-// } else {
-//     console.log("Noborders");
-// }
+if (numNeighbours === 1) {
+    console.log("Only 1 border!");
+} else if (numNeighbours > 1) {
+    console.log("More than 1 border");
+} else {
+    console.log("Noborders");
+}
 
 // Logical Operators       
 console.log("\n");        
