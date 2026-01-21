@@ -93,7 +93,7 @@ console.log(neighbours);
 
 // Iteration: The for Loop   
 console.log("\n");              
-for (let i=0; i<=50; i++)
+for (let i=1; i<=50; i++)
 {
    console.log(`Voter number ${i} is currently voting`)
 }
@@ -140,17 +140,16 @@ let myCountry = {
    citizens: 10700000,
    neighbours: ["Spain"],
    describe() {
-       console.log(`${this.country} has ${this.citizens} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`);
+       return `${this.country} has ${this.citizens} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`;
    },
    checkIsland() {
-       let numberOfNeighbours = this.neighbours.length;
-       this.isIsland = numberOfNeighbours == 0 ? true : false;
-       console.log(this.isIsland);
+       this.isIsland = this.neighbours.length === 0;
+       return this.isIsland;
    }
 }
 
-myCountry.describe();
-myCountry.checkIsland();
+console.log(myCountry.describe());
+console.log(myCountry.checkIsland());
 
 // Dot vs. Bracket Notation 
 console.log("\n");                   
