@@ -1,4 +1,12 @@
 // 1
+// Create a function parseUser(jsonString) that:
+// Uses JSON.parse() inside try...catch
+// Throws a custom Error if:
+// JSON is invalid
+// name is missing
+// age is not a number
+// Returns the parsed user object if everything is valid
+// Uses finally to log "Parsing attempt finished"
 function parseUser(jsonString) {
     try {
         const json = JSON.parse(jsonString)
@@ -19,6 +27,21 @@ parseUser('{"name":"John"}');
 parseUser('invalid json');
 
 // 2
+// Write a function getGitHubUser(username) that:
+// Fetches user data from GitHub API https://api.github.com/users/{username}
+// Checks:
+// - Network errors
+// - HTTP errors (404, 403, etc.)
+// Throws a custom error if:
+// - User does not exist
+// - API limit is exceeded
+// Returns only:
+//  {
+//   login,
+//   public_repos,
+//   followers
+// }
+// Handles all errors in one .catch()
 function getGitHubUser(username) {
     let url = `https://api.github.com/users/${username}`
     fetch(url)
@@ -49,6 +72,14 @@ function getGitHubUser(username) {
 getGitHubUser("emilia");
 
 // 3
+// Create a promise chain that:
+// - Fetches a JSON file from a URL
+// - Parses it
+// - Validates that it contains a users array
+// If validation fails:
+// - Handle the error
+// - Rethrow it
+// - Catch the rethrown error in a second .catch()
 let urlGit = 'https://raw.githubusercontent.com/EmiliaBuhnea123/git/refs/heads/main/users.json'
 fetch(urlGit)
 .then(response => response.json())
@@ -67,6 +98,9 @@ fetch(urlGit)
 });
 
 //4
+// Read user.json from disk.
+// Parse it using JSON.parse.
+// If parsing fails, show an error message instead of crashing.
 const fs = require("fs");
 fs.readFile("../users.json", (err, data) => {
     if(err) 
@@ -80,6 +114,12 @@ fs.readFile("../users.json", (err, data) => {
 })
 
 // 5
+// Fetch users from
+//  https://jsonplaceholder.typicode.com/users
+// Keep only users from cities that start with the letter “S”
+// Create a new array that contains only:
+// - name
+// - email
 let url = 'https://jsonplaceholder.typicode.com/users'
 fetch(url)
 .then(response => response.json())
@@ -96,6 +136,9 @@ fetch(url)
 .catch(error => console.log(error.message))
 
 //6
+// Fetch users from https://jsonplaceholder.typicode.com/users
+// Keep only users with emails that ends with “.biz”
+// And create a new array that contains only these users
 async function fetchAndSaveUsers() {
 const url = "https://jsonplaceholder.typicode.com/users";
 const fs = require("fs").promises
@@ -109,5 +152,4 @@ const fs = require("fs").promises
         console.log(error.message)
     }
 }
-
 fetchAndSaveUsers()
